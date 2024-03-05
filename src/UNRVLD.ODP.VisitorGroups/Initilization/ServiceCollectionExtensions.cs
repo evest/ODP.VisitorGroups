@@ -10,7 +10,7 @@ namespace UNRVLD.ODP.VisitorGroups.Initilization
 {
     public static class ServiceCollectionExtensions
     {
-        public static void AddODPVisitorGroups(this IServiceCollection services)
+        public static IServiceCollection AddODPVisitorGroups(this IServiceCollection services)
         {
             services.AddHttpClient();
             services.AddScoped<IGraphQLClient, GraphQLClient>();
@@ -18,6 +18,7 @@ namespace UNRVLD.ODP.VisitorGroups.Initilization
             services.AddScoped<ICustomerPropertyListRetriever, CustomerPropertyListRetriever>();
             services.AddHttpContextOrThreadScoped<IODPUserProfile, ODPUserProfile>();
             services.AddTransient<IAudienceSizeCachePopulator, AudienceSizeCachePopulator>();
+            return services;
         }
     }
 }
